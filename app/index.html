@@ -26,40 +26,28 @@
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li role="presentation" class="active">
-            <a href="#home" aria-controls="home" role="tab" data-toggle="tab" 
-            class="page-handler"
-            data-page-id="Home"
-            data-page-elem="#home" >Home</a>
-          </li>
-          <li role="presentation"> 
-            <a href="#about" aria-controls="about" role="tab" data-toggle="tab"
-            class="page-handler"
-            data-page-id="About"
-            data-page-elem="#about" >About</a>
-          </li>
-          <li role="presentation">
-            <a href="#contact" aria-controls="contact" role="tab" data-toggle="tab"
-            class="page-handler"
-            data-page-id="Contact"
-            data-page-elem="#contact" >Contact</a>
-          </li>
-        </ul>
-        <h3 class="text-muted">spa jquery</h3>
+         <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#/home">Home</a></li>
+            <li role="presentation" ><a href="#/about">About</a></li>
+            <li role="presentation" ><a href="#/contact">Contact</a></li>
+            <li role="presentation" ><a href="#/test">Test</a></li>
+          </ul>
+        <h3 class="text-muted">
+          <a href="/">easy spa</a>
+        </h3>
       </div>
-
-      <div>      
-        <!-- Tab panes -->
+      
+      <router></router>
+      <!-- <div>      
+        
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="home">home</div>
           <div role="tabpanel" class="tab-pane" id="about">about</div>
           <div role="tabpanel" class="tab-pane" id="contact">content</div>
         </div>
-      </div>
+      </div> -->
       <div class="footer">
         <p>♥ from the Yeoman team</p>
       </div>
@@ -100,10 +88,11 @@
     
 
     <!-- build:js scripts/main.js -->
-    <script src="scripts/pages/contact/contact.js"></script>
-    <script src="scripts/pages/about/about.js"></script>
-    <script src="scripts/pages/home/home.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/router.js"></script>    
+    <script src="scripts/main.js"></script>    
+    <!-- endbuild -->
+
+    <!-- build:js scripts/router.js -->
     
     <!-- endbuild -->
   </body>

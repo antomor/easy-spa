@@ -1,31 +1,33 @@
-(function ($) {
+(function (Router, Route, Page) {
 
-  var Pager = (function Pager() {
-    function loadPage($elem) {
-        var pageName = $elem.data('page-id');
-        var container = $elem.data('page-elem');
-        var page = window[pageName];
-        if (page) {
-          page.render(container);
-        }
-    }
+  let routes = {
+    default: Route([
+      Page({
+        view: '/scripts/pages/home/home.html'
+      })
+    ]),
+    '/home': Route([
+      Page({
+        view: '/scripts/pages/home/home.html'
+      })
+    ]),
+    '/about': Route([
+      Page({
+        view: '/scripts/pages/about/about.html'
+      })
+    ]),
+    '/contact': Route([
+      Page({
+        view: '/scripts/pages/contact/contact.html'
+      })
+    ]),
+    '/test': Route([
+      Page({
+        view: '/scripts/pages/test/test.html'
+      })
+    ]),
+  };
+  var router = Router(routes);
 
-    function init() {
-      $('.page-handler').click(function () {
-        var $this = $(this);
-        loadPage($this);
-      });
 
-      var first = $('.page-handler')[0];
-      loadPage($(first));
-    }
-
-    return {
-      init: init
-    }
-  })();
-
-  Pager.init();
-
-
-})(jQuery);
+})(Router, Route, Page);
