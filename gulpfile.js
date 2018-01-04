@@ -136,7 +136,7 @@ gulp.task('serve:test', ['scripts'], () => {
     port: 9000,
     ui: false,
     server: {
-      baseDir: 'test',
+      baseDir: ['test'],
       routes: {
         '/scripts': '.tmp/scripts',
         '/bower_components': 'bower_components'
