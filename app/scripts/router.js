@@ -18,7 +18,7 @@
     }
     return {
       render: render
-    }
+    };
   }
 
   function Route(pages) {
@@ -26,11 +26,14 @@
 
     function render(elem) {
       elem.innerHTML = '';
-      _pages.forEach(page => {
-        page.render(elem).then(rendered => {
+      var promises = _pages.map(p => {
+        return p.render(elem).then(rendered => {
           elem.append(rendered);
         });
       });
+      return Promise.all(
+        promises
+      );
     }
     return {
       render: render

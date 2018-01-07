@@ -17,7 +17,7 @@
       expect(p).to.not.be.empty;
       return p.render({}).then((content) => {
         expect(content).to.be.ok;
-        expect(content.innerHTML).to.equal('<div class="test"></div>');
+        expect(content.innerHTML).to.equal('<div class="page">page</div>');
       });
     });
 
