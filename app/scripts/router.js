@@ -1,76 +1,29 @@
 (function ($) {
   'use strict';
 
-  function Page(params) {
-    function render(elem) {
-      return $.get(params.view)
-        .then(function (res) {
-            let ret = document.createElement('div');
-            if (res) {
-              ret.innerHTML = res;
-            }
-            return Promise.resolve(ret);
-          },
-          function (error) {
-            let ret = document.createElement('div');
-            return Promise.resolve(ret);
-          });
+  class Router {
+    constructor(routes, container) {
+      this.routes = routes;
+      this.elem = container;
+
+      window.onhashchange = this.onHashChange.bind(this);
+      this.onHashChange();
     }
-    return {
-      render: render
-    };
-  }
 
-  function Route(pages) {
-    let _pages = pages;
-
-    function render(elem) {
-      elem.innerHTML = '';
-      var promises = _pages.map(p => {
-        return p.render(elem).then(rendered => {
-          elem.append(rendered);
-        });
-      });
-      return Promise.all(
-        promises
-      );
-    }
-    return {
-      render: render
-    }
-  }
-
-  function Router(params, container) {
-    let routes = params;
-
-    function onHashChange(evt) {
+    onHashChange(evt) {
       var hash = window.location.hash.substr(1);
       if (hash !== '') {
-        let route = routes[hash];
+        let route = this.routes[hash];
         if (route) {
           route.render(this.elem);
         }
       } else {
-        routes['default'].render(this.elem);
+        this.routes['default'].render(this.elem);
       }
     }
-
-    if (!container) {
-      throw new Exception('No router found');
-    }
-    var ret = {
-      elem: container
-    };
-    let hashChanged = onHashChange.bind(ret);
-    window.onhashchange = hashChanged;
-    hashChanged();
-
-    return ret;
   }
-
+  
   if (window) {
     window.Router = Router;
-    window.Route = Route;
-    window.Page = Page;
   }
 })(jQuery);

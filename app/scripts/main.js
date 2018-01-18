@@ -1,51 +1,51 @@
 (function (Router, Route, Page) {
 
   let routes = {
-    'default': Route([
-      Page({
+    'default': new Route([
+      new Page({
         view: '/scripts/components/menu/menu.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/home/home.html'
       })
     ]),
-    '/home': Route([
-      Page({
+    '/home': new Route([
+      new Page({
         view: '/scripts/components/menu/menu.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/home/home.html'
       })
     ]),
-    '/about': Route([
-      Page({
+    '/about': new Route([
+      new Page({
         view: '/scripts/components/menu/menu.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/about/about.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/contact/contact.html'
       })
     ]),
-    '/contact': Route([
-      Page({
+    '/contact': new Route([
+      new Page({
         view: '/scripts/components/menu/menu.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/contact/contact.html'
       })
     ]),
-    '/test': Route([
-      Page({
+    '/test': new Route([
+      new Page({
         view: '/scripts/components/menu/menu.html'
       }),
-      Page({
+      new Page({
         view: '/scripts/pages/test/test.html'
       })
     ]),
   };
-  var router = Router(routes, document.querySelector('router'));
+  var router = new Router(routes, document.querySelector('router'));
 
 
 })(Router, Route, Page);
